@@ -24,7 +24,7 @@ public class ExcepcionValidacion extends Exception {
 
 	public ExcepcionValidacion(String cod, String mens) {
 		 super(cod +"-"+mens);
-			codigo = "000";
+			codigo = "001";
 			mensajeTecnico = "Error Desconocido";
 	 }
 

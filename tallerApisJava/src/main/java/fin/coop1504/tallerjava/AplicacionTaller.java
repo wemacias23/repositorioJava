@@ -6,6 +6,8 @@ package fin.coop1504.tallerjava;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import fin.coop1504.tallerjava.excepciones.ExcepcionValidacion;
+
 /**
  * @author wemacias
  *
@@ -17,7 +19,7 @@ public class AplicacionTaller {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String cadena = "Hola Mundo";
+		/*String cadena = "Hola Mundo";
 		System.out.println(cadena.concat(" Tierra"));
 		System.out.println(cadena);
 		// SE DEBE UTILIZAR PARA CUANDO SE TRATEN CADENAS
@@ -74,8 +76,34 @@ public class AplicacionTaller {
 		System.out.println(cadenaVector);
 		// ENVIA EL MISMO OBJETO
 		Integer numeroArrayList = lista.get(0);
-		System.out.println(numeroArrayList);
+		System.out.println(numeroArrayList);*/
+		
+		validarDatos("12345");
+		try {
+			validarDatosEspecificos("");
+		} catch (ExcepcionValidacion e) {
+			// TODO Auto-generated catch block
+			System.err.println("Codigo Error: "+e.getCodigo()+" Mensaje: "+e.getMensajeTecnico());
+			e.printStackTrace();
+			
+		}finally {
+			System.out.println("Error");
+		}
 
 	}
 
+	public static void validarDatos(String anios) {
+		Integer edad = Integer.parseInt(anios);
+		System.out.println(edad);
+
+	}
+public static void validarDatosEspecificos(String dato) throws ExcepcionValidacion {
+	
+	if(dato == null || dato.isEmpty()) {
+		/*ExcepcionValidacion error = new ExcepcionValidacion("001","Error al validar dato");
+		throw error;*/
+		throw new ExcepcionValidacion("001","Error al validar dato"); 
+		
+	}
+}
 }
