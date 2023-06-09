@@ -8,12 +8,13 @@
 </head>
 <body>
 	<font color="green">Hola Padre WeWe, Soy la Pagina de Errores</font>
-<br>	
-<br>
+	<br>
+	<br>
 
 	<form id="form-1" action="/taller-mvc-servlet" method="get">
 		<div align="center">
-			<font style="font-family:Arial; font-size: 8vh">CREDENCIALES INVALIDAS</font>
+			<font style="font-family: Arial; font-size: 8vh"><%=request.getAttribute("codigo")%>
+				- <%=request.getAttribute("mensaje")%></font>
 		</div>
 		<div align="center">
 			<input type="submit" value="Regresar" id="button-1" />

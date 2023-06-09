@@ -11,17 +11,18 @@ public class RepositorioUsuario {
 	public Usuario consultar(String usuario) throws SQLException {
 
 		PreparedStatement consula = SingletonConexion.getConexion()
-				.prepareStatement("select * from tab_usuarios where upper(usuario) = ?");
-		consula.setString(1, usuario);
+				.prepareStatement("select * from tab_usuarios_we where upper(usuario) = ?");
+		consula.setString(1, usuario.toUpperCase());
 
 		ResultSet cursor = consula.executeQuery();
 		Usuario resultado = null;
 		while (cursor.next()) {
 			resultado = new Usuario();
-			resultado.setEstado(usuario);
-			resultado.setFechaCreacion(null);
-			resultado.setNombre(usuario);
-			resultado.setUsuario(usuario);
+			resultado.setEstado(cursor.getString("ESTADO"));
+			resultado.setFechaCreacion(cursor.getDate("FECHACREACION"));
+			resultado.setNombre(cursor.getString("NOMBRE"));
+			resultado.setUsuario(cursor.getString("USUARIO"));
+			resultado.setClave(cursor.getString("CLAVE"));
 		}
 		
 		return resultado;
